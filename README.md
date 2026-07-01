@@ -1,6 +1,8 @@
 # palmier
 
-`palmier-pro` is a minimal MCP server exposing a todo list over HTTP transport.
+`palmier-pro` is an MCP server exposing an in-memory video editing timeline over HTTP
+transport, mirroring the tool set of the [Palmier Pro](https://github.com/palmier-io/palmier-pro)
+video editor's own MCP integration.
 
 ## Run
 
@@ -19,7 +21,13 @@ claude mcp add --transport http palmier-pro http://127.0.0.1:19789/mcp
 
 ## Tools
 
-- `add_todo(text)` — add a new todo item
-- `list_todos()` — list all todo items
-- `complete_todo(id)` — mark a todo item as done
-- `delete_todo(id)` — remove a todo item
+- `getTimeline(startFrame?, endFrame?)` — project settings, tracks, and clips
+- `getMedia()` — list media assets in the library
+- `importMedia(name, type, durationFrames?)` — add a media asset
+- `addClips(entries)` — place media assets on the timeline
+- `removeClips(clipIds)` — remove clips by id
+- `moveClips(moves)` — relocate clips to a new track/frame
+- `splitClips(splits | trackIndex + frames)` — cut clips at given frames
+- `removeTracks(trackIndexes)` — remove tracks and their clips
+- `setProjectSettings(fps?, width?, height?, aspectRatio?)` — update project settings
+- `undo()` — revert the most recent edit
